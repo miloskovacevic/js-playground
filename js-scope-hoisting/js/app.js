@@ -38,7 +38,7 @@ console.log("Global: " + ime);
 
 //Local Variables Have Priority Over Global Variables in Functions
 
-console.log("====>>>  <<<====");
+console.log("====>>> test priority of vars <<<====");
 var prezime = "Kovacevic";
 
 function Users(){
@@ -47,6 +47,103 @@ function Users(){
 }
 
 Users();
+
+//Global Variables
+
+//If a variable is initialized (assigned a value) without first being declared with the var keyword,
+// it is automatically added to the global context and it is thus a global variable
+console.log("====>>> Davanje vrijednosti bez rijeci var automatski pravi globalnu varijablu <<<====");
+var ime2 = "neko";
+
+function NekaFunkcija(){
+    ime2 = "Milos";
+    console.log("Ime2 je " + ime2);
+}
+NekaFunkcija();
+console.log("Globalno ime2: " + ime2);
+
+
+//zato sto je i globalna varijabla...
+for(var i = 0; i < 10; i++){
+    console.log(i);
+}
+function aNumber(){
+    console.log("Broj je " + i);
+}
+aNumber(); // pokazuje 10
+
+
+//setTimeout Variables are Executed in the Global Scope
+console.log("====>>> test setTimeout global var's <<<====");
+var highValue = 200;
+var constantVal = 2;
+
+var myObj = {
+    highValue: 20,
+    constantVal: 5,
+    calculateIt: function(){
+        setTimeout(function () {
+            console.log(this.constantVal * this.highValue);
+        }, 2000);
+    }
+};
+
+//test
+//myObj.calculateIt();
+
+// Variable Hoisting
+//All variable declarations are hoisted (lifted and declared) to the top of the function,
+// if defined in a function, or the top of the global context, if outside a function.
+console.log("====>>> test hoisting-a <<<====");
+function PokaziIme(){
+    console.log("Ime(nije deklarisano) " + firstName);
+    var firstName = "Nemanja";
+    console.log("Ime " + firstName);
+}
+
+PokaziIme();
+
+console.log("====>>> hoisting <<<====");
+function PokaziPrezime(){
+    var prezime;
+    console.log("Prezime " + prezime);
+    prezime = "Kovacevic";
+    console.log("Prezime " + prezime);
+}
+
+PokaziPrezime();
+
+//Function Declaration Overrides Variable Declaration When Hoisted
+
+//hoisting - one more time...
+var myvar = "my value";
+(function(){
+    alert(myvar);
+    var myvar = 'local value';
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
