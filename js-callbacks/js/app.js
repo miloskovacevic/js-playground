@@ -75,6 +75,37 @@ console.log("====>>>testing callbacks<<<====");
 console.log(clientData.fullName);
 
 
+function genericPoemMaker(name, gender) {
+    console.log(name + " is finer than fine wine.");
+    console.log("Altruistic and noble for the modern time.");
+    console.log("Always admirably adorned with the latest style.");
+    console.log("A " + gender + " of unfortunate tragedies who still manages a perpetual smile");
+}
+
+function getUserInput2(firstName, lastName, gender, callback){
+    var fullName = firstName + " " + lastName;
+
+    if(typeof  callback === "function"){
+        callback(fullName, gender);
+    }
+}
+
+getUserInput2("Milos", "Kovacevic", "male", genericPoemMaker);
+
+
+
+function greetUser(customerName, sex){
+    var salutation = sex && sex === "Man"?"Mr.":"Ms.";
+    console.log("Hello, " + salutation + " " + customerName);
+}
+
+function getUserInput3(ime, prezime, pol, kolbek){
+    var punoIme = ime + " " + prezime;
+
+    kolbek(punoIme, pol);
+}
+
+getUserInput3("Ivan", "Popovic", "Man", greetUser);
 
 
 
